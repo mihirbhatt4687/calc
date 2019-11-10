@@ -1,0 +1,62 @@
+<ng-container *ngIf="api.loginUser">
+
+    <div class="row"><div class="col-12">
+    <div class="card">
+      <h5 class="card-header">Edit Expense</h5>
+      <div class="card-body">
+        <h5 class="card-title">Fill the details</h5>
+
+        <ul>
+          <li *ngFor="let e of error">
+            {{ e }}
+          </li>
+        </ul>
+
+        <form>
+          <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <input matInput id="title" name="title" placeholder="Enter Title*" [(ngModel)]="title">
+              </mat-form-field>
+          </div>
+          <div class="row form-group">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput id="amount" placeholder="Amount*" name="amount" [(ngModel)]="amount">
+                </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date*" [formControl]="edate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-6">
+                <ng-container *ngIf="doc; else newDeb">
+                  <img src="http://gjbazaar.com/web/web-images/{{doc}}" height="300" />
+                </ng-container>
+                <ng-template #newDeb>
+                    <div style="width:300px;height:300px;border:solid 1px;vertical-align: middle;line-height: 300px;font-weight:bold;text-align: center;color:white;background-color: #456bd8;">No Image</div>
+                </ng-template>
+                <br>
+                <input type="file" #myInput id="customFile" name="doc" (change)="handleFileInput($event.target.files)">
+
+              <!-- <div class="custom-file">
+                <input type="file" class="form-control custom-file-input" id="customFile" name="doc" (change)="handleFileInput($event.target.files)">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+              </div> -->
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="updateExpense()">Save</button>
+        </form>
+      </div>
+    </div>
+    </div></div>
+
+
+    </ng-container>
+
+

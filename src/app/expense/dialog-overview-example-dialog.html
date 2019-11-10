@@ -1,0 +1,31 @@
+
+<h1 mat-dialog-title>{{data.expense.value.title}}</h1>
+<div mat-dialog-content>
+    <ng-container *ngIf="data.expense.value.doc; else newDeb">
+      <img src="http://gjbazaar.com/web/web-images/{{data.expense.value.doc}}" height="300" />
+    </ng-container>
+    <ng-template #newDeb>
+        <div style="width:300px;height:300px;border:solid 1px;vertical-align: middle;line-height: 300px;font-weight:bold;text-align: center;color:white;background-color: #456bd8;">No Image</div>
+    </ng-template>
+    <p>&nbsp;</p>
+    <p>Date : {{data.expense.value.edate}}</p>
+    <p>Amount : {{data.expense.value.amount}}</p>
+
+</div>
+
+
+
+
+
+
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->

@@ -1,0 +1,75 @@
+<a class="btn btn-primary" routerLink="/add-expense"><i class="fa fa-plus"></i> Add Expense</a>
+
+<br/><br/>
+
+<div class="row"><div class="col-12">
+    <div class="card">
+      <h5 class="card-header">Expenses</h5>
+      <div class="card-body">
+        <h5 class="card-title">Filter Expenses</h5>
+
+
+
+<form>
+  <div class="row">
+    <div class="col-3">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Expense Title" value="" #startDate>
+        </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker" placeholder="Start Date" name="sdate" #sdate>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-3">
+        <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker1" placeholder="End Date" name="edate" #edate>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-3">
+      <button type="submit" class="btn btn-primary" (click)="loadExpense()"><i class="fa fa-search"></i> Search</button>&nbsp;
+      <button type="submit" class="btn btn-primary" (click)="clearFilters()"><i class="fa fa-undo"></i> Clear</button>
+    </div>
+  </div>
+</form>
+
+
+<br/><br/>
+
+<table class="table">
+  <thead>
+    <th>Sr. No.</th>
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Date</th>
+
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let expense of collection.data | paginate: config">
+      <td>{{ expense.id }}</td>
+      <td>{{ expense.value.title }}</td>
+      <td>{{ expense.value.amount }}</td>
+      <td>{{ expense.value.edate }}</td>
+      <td>
+
+            <a class="btn" href="javascript:;" (click)="openDialog(expense)"><i class="fa fa-file-image-o"></i></a>
+
+
+
+
+        <a class="btn" href="javascript:;" routerLink="/edit-expense/{{expense.value.uid}}"><i class="fa fa-edit"></i></a>
+        <a class="btn" href="javascript:;" (click)="deleteExpense(expense)"><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+</div></div>

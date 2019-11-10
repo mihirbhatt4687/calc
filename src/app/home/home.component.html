@@ -1,0 +1,29 @@
+
+<ng-container *ngIf="!api.loginUser">
+<div class="card">
+  <h5 class="card-header">Login</h5>
+  <div class="card-body">
+    <h5 class="card-title">Fill the details</h5>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" [(ngModel)]="password">
+      </div>
+      <button type="button" class="btn btn-primary" (click)="doLogin()">Submit</button>
+    </form>
+  </div>
+</div>
+<br>
+<p>Login using credentials : test@test.com / test</p>
+</ng-container>
+
+<!--
+<button type="button" class="btn btn-primary" (click)="api.checkLogin()">Check</button> -->
+
+
+
+
