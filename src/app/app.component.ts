@@ -4,6 +4,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 import { User } from './user.model';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -33,7 +34,6 @@ export class AppComponent {
   private loginUser: number;
 
   constructor(private api: ApiService, private httpClient: HttpClient, private router: Router) {
-
   }
 
   setlogin() {
@@ -47,8 +47,8 @@ export class AppComponent {
     if (this.setlogin()) {
       this.islogin = false;
       localStorage.removeItem('user');
-      //this.router.navigate(['/']);
-      window.location.href = '/';
+      //this.router.navigate(['']);
+      window.location.href = document.getElementsByTagName('base')[0].href;
     }
   }
 }

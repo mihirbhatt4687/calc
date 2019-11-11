@@ -27,7 +27,8 @@ export class HomeComponent implements OnInit {
     this.api.doLogin(this.email, this.password).subscribe((res: User) => {
       if (res.login !== '') {
         localStorage.setItem('user', res.login);
-        window.location.href = '/expense';
+        //this.router.navigate(['expense']);
+        window.location.href = document.getElementsByTagName('base')[0].href;
       } else {
         alert('Invalid login credentials')
       }

@@ -21,6 +21,10 @@
 <p>Login using credentials : test@test.com / test</p>
 </ng-container>
 
+<ng-container *ngIf="api.loginUser">
+  <h3>Welcome to Expense Calculator</h3>
+</ng-container>
+
 <!--
 <button type="button" class="btn btn-primary" (click)="api.checkLogin()">Check</button> -->
 

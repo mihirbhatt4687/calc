@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
 
   { path: 'about-us', component: AboutUsComponent },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
 
 ];
 
