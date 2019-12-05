@@ -304,7 +304,7 @@ module.exports = "<h4>Expense calc lets you manage your daily expense</h4>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-container *ngIf=\"api.loginUser\">\n\n<div class=\"row\"><div class=\"col-12\">\n<div class=\"card\">\n  <h5 class=\"card-header\">Add Expense</h5>\n  <div class=\"card-body\">\n    <h5 class=\"card-title\">Fill the details</h5>\n\n    <ul>\n      <li *ngFor=\"let e of error\">\n        {{ e }}\n      </li>\n    </ul>\n\n    <form>\n      <div class=\"form-group\">\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"title\" name=\"title\" placeholder=\"Enter Title*\" [(ngModel)]=\"title\">\n          </mat-form-field>\n      </div>\n      <div class=\"row form-group\">\n        <div class=\"col\">\n            <mat-form-field class=\"example-full-width\">\n                <input matInput id=\"amount\" placeholder=\"Amount*\" name=\"amount\" [(ngModel)]=\"amount\">\n            </mat-form-field>\n        </div>\n        <div class=\"col\">\n          <mat-form-field class=\"example-full-width\">\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date*\" [formControl]=\"edate\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n          </mat-form-field>\n        </div>\n      </div>\n\n      <div class=\"row form-group\">\n        <div class=\"col-6\">\n            <input type=\"file\" #myInput id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n\n\n          <!-- <div class=\"custom-file\">\n            <input type=\"file\" class=\"form-control custom-file-input\" id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Choose file</label>\n          </div> -->\n        </div>\n      </div>\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"addExpense()\">Save</button>\n    </form>\n  </div>\n</div>\n</div></div>\n\n\n</ng-container>\n\n\n"
+module.exports = "<ng-container *ngIf=\"api.loginUser\">\n\n<div class=\"row\"><div class=\"col-12\">\n<div class=\"card\">\n  <h5 class=\"card-header\">Add Expense</h5>\n  <div class=\"card-body\">\n    <h5 class=\"card-title\">Fill the details</h5>\n\n    <ul>\n      <li *ngFor=\"let e of error\">\n        {{ e }}\n      </li>\n    </ul>\n\n    <form>\n      <div class=\"form-group\">\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"title\" name=\"title\" placeholder=\"Enter Title*\" [(ngModel)]=\"title\">\n          </mat-form-field>\n      </div>\n      <div class=\"row form-group\">\n        <div class=\"col\">\n            <mat-form-field class=\"example-full-width\">\n                <input matInput id=\"amount\" placeholder=\"Amount*\" name=\"amount\" [(ngModel)]=\"amount\">\n            </mat-form-field>\n        </div>\n        <div class=\"col\">\n          <mat-form-field class=\"example-full-width\">\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date*\" [formControl]=\"edate\" readonly=\"true\" >\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n          </mat-form-field>\n        </div>\n      </div>\n\n      <div class=\"row form-group\">\n        <div class=\"col-6\">\n          <input type=\"file\" #myInput id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n          <!-- <div class=\"custom-file\">\n            <input type=\"file\" class=\"form-control custom-file-input\" id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Choose file</label>\n          </div> -->\n        </div>\n      </div>\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"addExpense()\">Save</button>\n    </form>\n  </div>\n</div>\n</div></div>\n\n\n</ng-container>\n\n\n"
 
 /***/ }),
 
@@ -315,7 +315,7 @@ module.exports = "<ng-container *ngIf=\"api.loginUser\">\n\n<div class=\"row\"><
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Page Wrapper -->\n<div id=\"wrapper\">\n\n  <!-- Sidebar -->\n  <ul class=\"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion\" id=\"accordionSidebar\">\n\n    <!-- Sidebar - Brand -->\n    <a class=\"sidebar-brand d-flex align-items-center justify-content-center\" routerLink=\"/\" routerLinkActive=\"active\">\n\n      <div class=\"sidebar-brand-text mx-3\">Expense Calc</div>\n    </a>\n\n    <!-- Divider -->\n    <hr class=\"sidebar-divider my-0\">\n\n\n\n    <!-- Nav Item - Dashboard -->\n    <!-- <li class=\"nav-item active\">\n      <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\"><span>Dashboard {{setlogin()}} </span></a>\n    </li> -->\n    <ng-container *ngIf=\"!setlogin()\">\n    <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"\" routerLinkActive=\"active\"><span>Home</span></a>\n      </li>\n    </ng-container>\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" routerLink=\"/about-us\" routerLinkActive=\"active\"><span>About Us</span></a>\n    </li>\n    <ng-container *ngIf=\"setlogin()\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"/expense\" routerLinkActive=\"active\"><span>Manage Expense</span></a>\n      </li>\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" (click)=\"doLogout()\" href=\"javascript:;\"><span>Logout</span></a>\n      </li>\n    </ng-container>\n\n    <!-- Divider -->\n    <hr class=\"sidebar-divider\">\n\n  </ul>\n  <!-- End of Sidebar -->\n\n  <!-- Content Wrapper -->\n  <div id=\"content-wrapper\" class=\"d-flex flex-column\">\n\n    <!-- Main Content -->\n    <div id=\"content\">\n\n\n      <!-- Topbar -->\n      <nav class=\"navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow\">\n\n        <!-- Sidebar Toggle (Topbar) -->\n        <button id=\"sidebarToggleTop\" class=\"btn btn-link d-md-none rounded-circle mr-3\">\n          <i class=\"fa fa-bars\"></i>\n        </button>\n\n        <!-- Topbar Search -->\n        <!-- <form class=\"d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search\">\n          <div class=\"input-group\">\n            <input type=\"text\" class=\"form-control bg-light border-0 small\" placeholder=\"Search for...\" aria-label=\"Search\" aria-describedby=\"basic-addon2\">\n            <div class=\"input-group-append\">\n              <button class=\"btn btn-primary\" type=\"button\">\n                <i class=\"fa fa-search\"></i>\n              </button>\n            </div>\n          </div>\n        </form> -->\n        <ng-container *ngIf=\"setlogin()\">\n        <!-- Topbar Navbar -->\n        <ul class=\"navbar-nav ml-auto\">\n\n          <!-- Nav Item - Search Dropdown (Visible Only XS) -->\n          <li class=\"nav-item dropdown no-arrow d-sm-none\">\n            <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"searchDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <i class=\"fas fa-search fa-fw\"></i>\n            </a>\n            <!-- Dropdown - Messages -->\n            <div class=\"dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in\" aria-labelledby=\"searchDropdown\">\n              <form class=\"form-inline mr-auto w-100 navbar-search\">\n                <div class=\"input-group\">\n                  <input type=\"text\" class=\"form-control bg-light border-0 small\" placeholder=\"Search for...\" aria-label=\"Search\" aria-describedby=\"basic-addon2\">\n                  <div class=\"input-group-append\">\n                    <button class=\"btn btn-primary\" type=\"button\">\n                      <i class=\"fas fa-search fa-sm\"></i>\n                    </button>\n                  </div>\n                </div>\n              </form>\n            </div>\n          </li>\n\n          <!-- Nav Item - Alerts -->\n\n\n          <!-- Nav Item - Messages -->\n\n\n          <!-- <div class=\"topbar-divider d-none d-sm-block\"></div> -->\n\n          <!-- Nav Item - User Information -->\n          <!-- <li class=\"nav-item dropdown no-arrow\">\n            <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"userDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\">Valerie Luna</span>\n              <img class=\"img-profile rounded-circle\" src=\"\">\n            </a>\n\n            <div class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\" aria-labelledby=\"userDropdown\">\n              <a class=\"dropdown-item\" href=\"#\">\n                <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Profile\n              </a>\n              <a class=\"dropdown-item\" href=\"#\">\n                <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Settings\n              </a>\n              <a class=\"dropdown-item\" href=\"#\">\n                <i class=\"fas fa-list fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Activity Log\n              </a>\n              <div class=\"dropdown-divider\"></div>\n              <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#logoutModal\">\n                <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Logout\n              </a>\n            </div>\n          </li> -->\n\n        </ul>\n        </ng-container>\n      </nav>\n      <!-- End of Topbar -->\n\n\n      <!-- Begin Page Content -->\n      <div class=\"container-fluid\">\n        <router-outlet></router-outlet>\n      </div>\n      <!-- /.container-fluid -->\n    </div>\n    <!-- End of Main Content -->\n\n    <!-- Footer -->\n    <footer class=\"sticky-footer bg-white\">\n      <div class=\"container my-auto\">\n        <div class=\"copyright text-center my-auto\">\n          <span>Copyright &copy; Your Website 2019</span>\n        </div>\n      </div>\n    </footer>\n    <!-- End of Footer -->\n  </div>\n  <!-- End of Content Wrapper -->\n</div>\n<!-- End of Page Wrapper -->\n\n<!-- Scroll to Top Button-->\n<a class=\"scroll-to-top rounded\" href=\"#page-top\">\n  <i class=\"fas fa-angle-up\"></i>\n</a>\n\n<!-- Logout Modal-->\n<div class=\"modal fade\" id=\"logoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ready to Leave?</h5>\n        <button class=\"close\" type=\"button\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">×</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">Select \"Logout\" below if you are ready to end your current session.</div>\n      <div class=\"modal-footer\">\n        <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>\n        <a class=\"btn btn-primary\" href=\"login.html\">Logout</a>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<!-- Page Wrapper -->\n<div id=\"wrapper\">\n\n  <!-- Sidebar -->\n  <ul class=\"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion\" id=\"accordionSidebar\">\n\n    <!-- Sidebar - Brand -->\n    <a class=\"sidebar-brand d-flex align-items-center justify-content-center\" routerLink=\"/\" routerLinkActive=\"active\">\n\n      <div class=\"sidebar-brand-text mx-3\">Expense Calc</div>\n    </a>\n\n    <!-- Divider -->\n    <hr class=\"sidebar-divider my-0\">\n\n\n\n    <!-- Nav Item - Dashboard -->\n    <!-- <li class=\"nav-item active\">\n      <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\"><span>Dashboard {{setlogin()}} </span></a>\n    </li> -->\n    <ng-container *ngIf=\"!setlogin()\">\n    <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"\" routerLinkActive=\"active\"><span>Home</span></a>\n      </li>\n    </ng-container>\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" routerLink=\"/about-us\" routerLinkActive=\"active\"><span>About Us</span></a>\n    </li>\n    <ng-container *ngIf=\"setlogin()\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"/expense\" routerLinkActive=\"active\"><span>Manage Expense</span></a>\n      </li>\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"/report\" routerLinkActive=\"active\"><span>Report</span></a>\n      </li>\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" (click)=\"doLogout()\" href=\"javascript:;\"><span>Logout</span></a>\n      </li>\n    </ng-container>\n\n    <!-- Divider -->\n    <hr class=\"sidebar-divider\">\n\n  </ul>\n  <!-- End of Sidebar -->\n\n  <!-- Content Wrapper -->\n  <div id=\"content-wrapper\" class=\"d-flex flex-column\">\n\n    <!-- Main Content -->\n    <div id=\"content\">\n\n\n      <!-- Topbar -->\n      <nav class=\"navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow\">\n\n        <!-- Sidebar Toggle (Topbar) -->\n        <button id=\"sidebarToggleTop\" class=\"btn btn-link d-md-none rounded-circle mr-3\">\n          <i class=\"fa fa-bars\"></i>\n        </button>\n\n        <!-- Topbar Search -->\n        <!-- <form class=\"d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search\">\n          <div class=\"input-group\">\n            <input type=\"text\" class=\"form-control bg-light border-0 small\" placeholder=\"Search for...\" aria-label=\"Search\" aria-describedby=\"basic-addon2\">\n            <div class=\"input-group-append\">\n              <button class=\"btn btn-primary\" type=\"button\">\n                <i class=\"fa fa-search\"></i>\n              </button>\n            </div>\n          </div>\n        </form> -->\n        <ng-container *ngIf=\"setlogin()\">\n        <!-- Topbar Navbar -->\n        <ul class=\"navbar-nav ml-auto\">\n\n          <!-- Nav Item - Search Dropdown (Visible Only XS) -->\n          <li class=\"nav-item dropdown no-arrow d-sm-none\">\n            <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"searchDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <i class=\"fas fa-search fa-fw\"></i>\n            </a>\n            <!-- Dropdown - Messages -->\n            <div class=\"dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in\" aria-labelledby=\"searchDropdown\">\n              <form class=\"form-inline mr-auto w-100 navbar-search\">\n                <div class=\"input-group\">\n                  <input type=\"text\" class=\"form-control bg-light border-0 small\" placeholder=\"Search for...\" aria-label=\"Search\" aria-describedby=\"basic-addon2\">\n                  <div class=\"input-group-append\">\n                    <button class=\"btn btn-primary\" type=\"button\">\n                      <i class=\"fas fa-search fa-sm\"></i>\n                    </button>\n                  </div>\n                </div>\n              </form>\n            </div>\n          </li>\n\n          <!-- Nav Item - Alerts -->\n\n\n          <!-- Nav Item - Messages -->\n\n\n          <!-- <div class=\"topbar-divider d-none d-sm-block\"></div> -->\n\n          <!-- Nav Item - User Information -->\n          <!-- <li class=\"nav-item dropdown no-arrow\">\n            <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"userDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\">Valerie Luna</span>\n              <img class=\"img-profile rounded-circle\" src=\"\">\n            </a>\n\n            <div class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\" aria-labelledby=\"userDropdown\">\n              <a class=\"dropdown-item\" href=\"#\">\n                <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Profile\n              </a>\n              <a class=\"dropdown-item\" href=\"#\">\n                <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Settings\n              </a>\n              <a class=\"dropdown-item\" href=\"#\">\n                <i class=\"fas fa-list fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Activity Log\n              </a>\n              <div class=\"dropdown-divider\"></div>\n              <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#logoutModal\">\n                <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>\n                Logout\n              </a>\n            </div>\n          </li> -->\n\n        </ul>\n        </ng-container>\n      </nav>\n      <!-- End of Topbar -->\n\n\n      <!-- Begin Page Content -->\n      <div class=\"container-fluid\">\n        <router-outlet></router-outlet>\n      </div>\n      <!-- /.container-fluid -->\n    </div>\n    <!-- End of Main Content -->\n\n    <!-- Footer -->\n    <footer class=\"sticky-footer bg-white\">\n      <div class=\"container my-auto\">\n        <div class=\"copyright text-center my-auto\">\n          <span>Copyright &copy; Your Website 2019</span>\n        </div>\n      </div>\n    </footer>\n    <!-- End of Footer -->\n  </div>\n  <!-- End of Content Wrapper -->\n</div>\n<!-- End of Page Wrapper -->\n\n<!-- Scroll to Top Button-->\n<a class=\"scroll-to-top rounded\" href=\"#page-top\">\n  <i class=\"fas fa-angle-up\"></i>\n</a>\n\n<!-- Logout Modal-->\n<div class=\"modal fade\" id=\"logoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ready to Leave?</h5>\n        <button class=\"close\" type=\"button\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">×</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">Select \"Logout\" below if you are ready to end your current session.</div>\n      <div class=\"modal-footer\">\n        <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>\n        <a class=\"btn btn-primary\" href=\"login.html\">Logout</a>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -326,7 +326,7 @@ module.exports = "<!-- Page Wrapper -->\n<div id=\"wrapper\">\n\n  <!-- Sidebar 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-container *ngIf=\"api.loginUser\">\n\n    <div class=\"row\"><div class=\"col-12\">\n    <div class=\"card\">\n      <h5 class=\"card-header\">Edit Expense</h5>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">Fill the details</h5>\n\n        <ul>\n          <li *ngFor=\"let e of error\">\n            {{ e }}\n          </li>\n        </ul>\n\n        <form>\n          <div class=\"form-group\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput id=\"title\" name=\"title\" placeholder=\"Enter Title*\" [(ngModel)]=\"title\">\n              </mat-form-field>\n          </div>\n          <div class=\"row form-group\">\n            <div class=\"col\">\n                <mat-form-field class=\"example-full-width\">\n                    <input matInput id=\"amount\" placeholder=\"Amount*\" name=\"amount\" [(ngModel)]=\"amount\">\n                </mat-form-field>\n            </div>\n            <div class=\"col\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date*\" [formControl]=\"edate\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                <mat-datepicker #picker></mat-datepicker>\n              </mat-form-field>\n            </div>\n          </div>\n\n          <div class=\"row form-group\">\n            <div class=\"col-6\">\n                <ng-container *ngIf=\"doc; else newDeb\">\n                  <img src=\"http://gjbazaar.com/web/web-images/{{doc}}\" height=\"300\" />\n                </ng-container>\n                <ng-template #newDeb>\n                    <div style=\"width:300px;height:300px;border:solid 1px;vertical-align: middle;line-height: 300px;font-weight:bold;text-align: center;color:white;background-color: #456bd8;\">No Image</div>\n                </ng-template>\n                <br>\n                <input type=\"file\" #myInput id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n\n              <!-- <div class=\"custom-file\">\n                <input type=\"file\" class=\"form-control custom-file-input\" id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n                <label class=\"custom-file-label\" for=\"customFile\">Choose file</label>\n              </div> -->\n            </div>\n          </div>\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"updateExpense()\">Save</button>\n        </form>\n      </div>\n    </div>\n    </div></div>\n\n\n    </ng-container>\n\n\n"
+module.exports = "<ng-container *ngIf=\"api.loginUser\">\n\n    <div class=\"row\"><div class=\"col-12\">\n    <div class=\"card\">\n      <h5 class=\"card-header\">Edit Expense</h5>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">Fill the details</h5>\n\n        <ul>\n          <li *ngFor=\"let e of error\">\n            {{ e }}\n          </li>\n        </ul>\n\n        <form>\n          <div class=\"form-group\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput id=\"title\" name=\"title\" placeholder=\"Enter Title*\" [(ngModel)]=\"title\">\n              </mat-form-field>\n          </div>\n          <div class=\"row form-group\">\n            <div class=\"col\">\n                <mat-form-field class=\"example-full-width\">\n                    <input matInput id=\"amount\" placeholder=\"Amount*\" name=\"amount\" [(ngModel)]=\"amount\">\n                </mat-form-field>\n            </div>\n            <div class=\"col\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date*\" [formControl]=\"edate\" readonly=\"true\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                <mat-datepicker #picker></mat-datepicker>\n              </mat-form-field>\n            </div>\n          </div>\n\n          <div class=\"row form-group\">\n            <div class=\"col-6\">\n                <ng-container *ngIf=\"doc; else newDeb\">\n                  <img src=\"http://gjbazaar.com/web/web-images/{{doc}}\" height=\"300\" />\n                </ng-container>\n                <ng-template #newDeb>\n                    <div style=\"width:300px;height:300px;border:solid 1px;vertical-align: middle;line-height: 300px;font-weight:bold;text-align: center;color:white;background-color: #456bd8;\">No Image</div>\n                </ng-template>\n                <br>\n                <input type=\"file\" #myInput id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n\n              <!-- <div class=\"custom-file\">\n                <input type=\"file\" class=\"form-control custom-file-input\" id=\"customFile\" name=\"doc\" (change)=\"handleFileInput($event.target.files)\">\n                <label class=\"custom-file-label\" for=\"customFile\">Choose file</label>\n              </div> -->\n            </div>\n          </div>\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"updateExpense()\">Save</button>\n        </form>\n      </div>\n    </div>\n    </div></div>\n\n\n    </ng-container>\n\n\n"
 
 /***/ }),
 
@@ -371,6 +371,17 @@ module.exports = "\n<ng-container *ngIf=\"!api.loginUser\">\n<div class=\"card\"
 /***/ (function(module, exports) {
 
 module.exports = "<p>register works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/report/report.component.html":
+/*!************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/report/report.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-container *ngIf=\"api.loginUser\">\n\n  <div class=\"row\"><div class=\"col-12\">\n  <div class=\"card\">\n    <h5 class=\"card-header\">Generate Report</h5>\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">Select Criteria</h5>\n\n\n\n      <form>\n        <div class=\"row form-group\">\n          <div class=\"col\">\n            <mat-form-field >\n              <mat-label>All Months</mat-label>\n              <mat-select [(value)]=\"month\">\n                  <mat-option value=\"\">\n                      All Month\n                    </mat-option>\n                <mat-option *ngFor=\"let month of months; index as key\" [value]=\"key\">\n                  {{month}}\n                </mat-option>\n              </mat-select>\n            </mat-form-field>\n            &nbsp;&nbsp;&nbsp;\n            <mat-form-field>\n              <input matInput [matDatepicker]=\"dp\" placeholder=\"Month and Year\" [formControl]=\"date\">\n              <mat-datepicker-toggle matSuffix [for]=\"dp\"></mat-datepicker-toggle>\n              <mat-datepicker #dp\n                              startView=\"multi-year\"\n                              (yearSelected)=\"chosenYearHandler($event, dp)\"\n\n                              panelClass=\"example-month-picker\">\n              </mat-datepicker>\n            </mat-form-field>\n\n            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n            Total Amount : <strong>{{total}}</strong>\n          </div>\n        </div>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"generateReport(dp)\">Show Records</button>\n      </form>\n\n      <br><br>\n\n\n      <ng-container *ngIf=\"collection.data.length; else noRecords\">\n        <table class=\"table\">\n          <thead>\n            <th>Sr. No.</th>\n            <th>Title</th>\n            <th>Amount</th>\n            <th>Date</th>\n\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let expense of collection.data | paginate: config\">\n              <td>{{ expense.id }}</td>\n              <td>{{ expense.value.title }}</td>\n              <td>{{ expense.value.amount }}</td>\n              <td>{{ expense.value.edate }}</td>\n\n            </tr>\n          </tbody>\n        </table>\n        <pagination-controls (pageChange)=\"pageChanged($event)\"></pagination-controls>\n      </ng-container>\n      <ng-template #noRecords>\n        No Records\n      </ng-template>\n\n    </div>\n  </div>\n  </div></div>\n\n\n  </ng-container>\n\n\n"
 
 /***/ }),
 
@@ -496,9 +507,10 @@ var MY_FORMATS = {
     },
 };
 var AddExpenseComponent = /** @class */ (function () {
-    function AddExpenseComponent(api, datePipe) {
+    function AddExpenseComponent(api, datePipe, formBuilder) {
         this.api = api;
         this.datePipe = datePipe;
+        this.formBuilder = formBuilder;
         this.fileToUpload = null;
         this.allowedFileTypes = [
             'image/jpeg',
@@ -512,9 +524,14 @@ var AddExpenseComponent = /** @class */ (function () {
         //conso
     }
     AddExpenseComponent.prototype.ngOnInit = function () {
+        this.formGroup = this.formBuilder.group({
+            dateJoined: { disabled: true, value: moment__WEBPACK_IMPORTED_MODULE_6__() }
+        });
+        console.log(this.formGroup);
     };
     AddExpenseComponent.prototype.addExpense = function () {
         var _this = this;
+        this.error = [];
         if (typeof this.title === 'undefined' || typeof this.amount === 'undefined' || typeof this.edate === 'undefined') {
             this.error.push('Please fill mendatory fields');
         }
@@ -539,7 +556,8 @@ var AddExpenseComponent = /** @class */ (function () {
     };
     AddExpenseComponent.ctorParameters = function () { return [
         { type: _api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"] },
-        { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"] }
+        { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('myInput', { static: false }),
@@ -563,7 +581,7 @@ var AddExpenseComponent = /** @class */ (function () {
             ],
             styles: [__webpack_require__(/*! ./add-expense.component.css */ "./src/app/add-expense/add-expense.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"]])
     ], AddExpenseComponent);
     return AddExpenseComponent;
 }());
@@ -599,6 +617,7 @@ var ApiService = /** @class */ (function () {
         this.deleteExpenseUrl = 'http://gjbazaar.com/web/deleteExpenseWeb.php';
         this.updateExpenseUrl = 'http://gjbazaar.com/web/updateExpenseWeb.php';
         this.editExpenseUrl = 'http://gjbazaar.com/web/editExpenseWeb.php';
+        this.reportExpenseUrl = 'http://gjbazaar.com/web/reportExpenseWeb.php';
         this.body = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]();
         this.isLogin(localStorage.getItem('user')).subscribe(function (res) {
             _this.loginUser = res.user;
@@ -694,6 +713,13 @@ var ApiService = /** @class */ (function () {
             .set('sDate', startDate)
             .set('eDate', endDate);
         return this.http.post(this.loadExpenseUrl, params);
+    };
+    ApiService.prototype.reportExpense = function (month, year) {
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
+            .set('token', localStorage.getItem('user'))
+            .set('month', month)
+            .set('year', year);
+        return this.http.post(this.reportExpenseUrl, params);
     };
     ApiService.prototype.deleteExpense = function (expense) {
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
@@ -856,6 +882,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_slider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/slider */ "./node_modules/@angular/material/esm5/slider.es5.js");
 /* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
 /* harmony import */ var _edit_expense_edit_expense_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./edit-expense/edit-expense.component */ "./src/app/edit-expense/edit-expense.component.ts");
+/* harmony import */ var _report_report_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./report/report.component */ "./src/app/report/report.component.ts");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+
+
 
 
 
@@ -876,6 +906,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appRoutes = [
+    { path: 'report', component: _report_report_component__WEBPACK_IMPORTED_MODULE_19__["ReportComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_14__["RegisterComponent"] },
     { path: 'about-us', component: _about_us_about_us_component__WEBPACK_IMPORTED_MODULE_10__["AboutUsComponent"] },
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"], pathMatch: 'full' },
@@ -897,7 +928,8 @@ var AppModule = /** @class */ (function () {
                 _register_register_component__WEBPACK_IMPORTED_MODULE_14__["RegisterComponent"],
                 _add_expense_add_expense_component__WEBPACK_IMPORTED_MODULE_15__["AddExpenseComponent"],
                 _expense_expense_component__WEBPACK_IMPORTED_MODULE_12__["DialogOverviewExampleDialogComponent"],
-                _edit_expense_edit_expense_component__WEBPACK_IMPORTED_MODULE_18__["EditExpenseComponent"]
+                _edit_expense_edit_expense_component__WEBPACK_IMPORTED_MODULE_18__["EditExpenseComponent"],
+                _report_report_component__WEBPACK_IMPORTED_MODULE_19__["ReportComponent"]
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterModule"].forRoot(appRoutes, { enableTracing: false } // <-- debugging purposes only
@@ -909,7 +941,8 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_13__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ReactiveFormsModule"],
                 _angular_material_slider__WEBPACK_IMPORTED_MODULE_16__["MatSliderModule"], _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatButtonModule"],
-                ngx_pagination__WEBPACK_IMPORTED_MODULE_17__["NgxPaginationModule"]
+                ngx_pagination__WEBPACK_IMPORTED_MODULE_17__["NgxPaginationModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_20__["MatSelectModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
@@ -1362,6 +1395,145 @@ var RegisterComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/report/report.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/report/report.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JlcG9ydC9yZXBvcnQuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/report/report.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/report/report.component.ts ***!
+  \********************************************/
+/*! exports provided: MY_FORMATS, ReportComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MY_FORMATS", function() { return MY_FORMATS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportComponent", function() { return ReportComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material-moment-adapter */ "./node_modules/@angular/material-moment-adapter/esm5/material-moment-adapter.es5.js");
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/esm5/core.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+
+
+
+
+// tslint:disable-next-line:no-duplicate-imports
+
+
+var moment = moment__WEBPACK_IMPORTED_MODULE_6__["defaultFormat"] || moment__WEBPACK_IMPORTED_MODULE_6__;
+var MY_FORMATS = {
+    parse: {
+        dateInput: 'YYYY',
+    },
+    display: {
+        dateInput: 'YYYY',
+        monthYearLabel: 'MMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY',
+    },
+};
+var ReportComponent = /** @class */ (function () {
+    function ReportComponent(api, datePipe) {
+        this.api = api;
+        this.datePipe = datePipe;
+        this.collection = { count: 5, data: [] };
+        this.date = new _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormControl"](moment__WEBPACK_IMPORTED_MODULE_6__());
+        this.config = {
+            itemsPerPage: 10,
+            currentPage: 1,
+            totalItems: this.collection.count
+        };
+        //this.month = 5;
+    }
+    ReportComponent.prototype.chosenYearHandler = function (normalizedYear, datepicker) {
+        var ctrlValue = this.date.value;
+        ctrlValue.year(normalizedYear.year());
+        this.date.setValue(ctrlValue);
+        datepicker.close();
+    };
+    ReportComponent.prototype.chosenMonthHandler = function (normalizedMonth, datepicker) {
+        var ctrlValue = this.date.value;
+        ctrlValue.month(normalizedMonth.month());
+        this.date.setValue(ctrlValue);
+        datepicker.close();
+    };
+    ReportComponent.prototype.generateReport = function () {
+        var _this = this;
+        this.collection.data = [];
+        var mon = this.month + 1;
+        if (isNaN(this.month) || this.month === '') {
+            mon = 0;
+        }
+        //    alert(isNaN(this.month))
+        this.total = 0;
+        this.api.reportExpense(mon, this.date.value.year()).subscribe(function (res) {
+            _this.config.totalItems = _this.collection.count = res.count;
+            for (var i = 0; i < _this.collection.count; i++) {
+                _this.collection.data.push({
+                    id: i + 1,
+                    value: res.expenses[i]
+                });
+                _this.total += parseInt(res.expenses[i].amount);
+            }
+        });
+    };
+    ReportComponent.prototype.pageChanged = function (event) {
+        this.config.currentPage = event;
+    };
+    ReportComponent.prototype.ngOnInit = function () {
+        this.month = parseInt(moment__WEBPACK_IMPORTED_MODULE_6__().format('M')) - 1;
+        this.months = moment__WEBPACK_IMPORTED_MODULE_6__["months"]();
+        this.year = moment__WEBPACK_IMPORTED_MODULE_6__().format('YYYY');
+        this.generateReport();
+        //console.log(this.month)
+    };
+    ReportComponent.ctorParameters = function () { return [
+        { type: _api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"] },
+        { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"] }
+    ]; };
+    ReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-report',
+            template: __webpack_require__(/*! raw-loader!./report.component.html */ "./node_modules/raw-loader/index.js!./src/app/report/report.component.html"),
+            providers: [
+                // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+                // application's root module. We provide it at the component level here, due to limitations of
+                // our example generation script.
+                _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"],
+                {
+                    provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["DateAdapter"],
+                    useClass: _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_3__["MomentDateAdapter"],
+                    deps: [_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MAT_DATE_LOCALE"], _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_3__["MAT_MOMENT_DATE_ADAPTER_OPTIONS"]]
+                },
+                { provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MAT_DATE_FORMATS"], useValue: MY_FORMATS },
+            ],
+            styles: [__webpack_require__(/*! ./report.component.css */ "./src/app/report/report.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"]])
+    ], ReportComponent);
+    return ReportComponent;
 }());
 
 

@@ -17,15 +17,16 @@ import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { EditExpenseComponent } from './edit-expense/edit-expense.component';
+import { ReportComponent } from './report/report.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
 const appRoutes: Routes = [
+  { path: 'report', component: ReportComponent },
   { path: 'register', component: RegisterComponent },
-
   { path: 'about-us', component: AboutUsComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
-
 ];
 
 
@@ -50,7 +51,8 @@ appRoutes.push(
     RegisterComponent,
     AddExpenseComponent,
     DialogOverviewExampleDialogComponent,
-    EditExpenseComponent
+    EditExpenseComponent,
+    ReportComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -64,7 +66,8 @@ appRoutes.push(
     BrowserAnimationsModule,
     FormsModule, ReactiveFormsModule,
     MatSliderModule, MatButtonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,7 +3,7 @@ import { ApiService } from '../api.service';
 
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import {defaultFormat as _rollupMoment} from 'moment';
@@ -46,6 +46,7 @@ export class AddExpenseComponent implements OnInit {
   @ViewChild('myInput', {static: false}) myInputVariable: ElementRef;
 
   private title: string;
+  private formGroup: FormGroup;
 
   private amount: string;
   private doc: string;
@@ -61,15 +62,23 @@ export class AddExpenseComponent implements OnInit {
 
   edate = new FormControl(_moment());
 
-  constructor(private api: ApiService, private datePipe: DatePipe) {
+  constructor(private api: ApiService, private datePipe: DatePipe, private formBuilder: FormBuilder) {
     //this.edate = this.datePipe.transform(this.edate, 'dd.mm.yyyy');
     //conso
   }
 
   ngOnInit() {
+
+
+    this.formGroup = this.formBuilder.group({
+      dateJoined: { disabled: true, value: _moment() }
+    });
+
+    console.log(this.formGroup);
   }
 
   addExpense() {
+    this.error = [];
     if (typeof this.title === 'undefined' || typeof this.amount === 'undefined' || typeof this.edate === 'undefined') {
       this.error.push('Please fill mendatory fields');
     } else if (this.fileToUpload && this.allowedFileTypes.indexOf(this.fileToUpload.type) === -1) {

@@ -10,4 +10,5 @@ export interface Expense {
   edate: string;
   amount: string;
   doc: string;
+  user: number;
 }

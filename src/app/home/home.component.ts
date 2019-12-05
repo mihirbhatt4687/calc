@@ -14,16 +14,14 @@ export class HomeComponent implements OnInit {
   private email: string;
   private password: string;
 
-
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
-   // console.log(app)
+    // console.log(app)
   }
 
   doLogin() {
     //console.log(this.validateEmail(this.email));
-
     this.api.doLogin(this.email, this.password).subscribe((res: User) => {
       if (res.login !== '') {
         localStorage.setItem('user', res.login);
@@ -35,8 +33,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-
   validateEmail(emailField: string){
     let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -45,5 +41,5 @@ export class HomeComponent implements OnInit {
         return false;
     }
     return true;
-}
+  }
 }

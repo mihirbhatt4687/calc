@@ -16,6 +16,7 @@ export class ApiService {
   private deleteExpenseUrl = 'http://gjbazaar.com/web/deleteExpenseWeb.php';
   private updateExpenseUrl = 'http://gjbazaar.com/web/updateExpenseWeb.php';
   private editExpenseUrl = 'http://gjbazaar.com/web/editExpenseWeb.php';
+  private reportExpenseUrl = 'http://gjbazaar.com/web/reportExpenseWeb.php';
 
   private body = new HttpParams();
   private loginUser: string;
@@ -130,6 +131,15 @@ export class ApiService {
       .set('eDate', endDate);
 
     return this.http.post<ExpenseResult>(this.loadExpenseUrl, params);
+  }
+
+  reportExpense(month: string, year: string): Observable<ExpenseResult> {
+    const params = new HttpParams()
+      .set('token', localStorage.getItem('user'))
+      .set('month', month)
+      .set('year', year);
+
+    return this.http.post<ExpenseResult>(this.reportExpenseUrl, params);
   }
 
   deleteExpense(expense: Expense) {

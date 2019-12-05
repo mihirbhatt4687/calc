@@ -1,0 +1,79 @@
+<ng-container *ngIf="api.loginUser">
+
+  <div class="row"><div class="col-12">
+  <div class="card">
+    <h5 class="card-header">Generate Report</h5>
+    <div class="card-body">
+      <h5 class="card-title">Select Criteria</h5>
+
+
+
+      <form>
+        <div class="row form-group">
+          <div class="col">
+            <mat-form-field >
+              <mat-label>All Months</mat-label>
+              <mat-select [(value)]="month">
+                  <mat-option value="">
+                      All Month
+                    </mat-option>
+                <mat-option *ngFor="let month of months; index as key" [value]="key">
+                  {{month}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;
+            <mat-form-field>
+              <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp
+                              startView="multi-year"
+                              (yearSelected)="chosenYearHandler($event, dp)"
+
+                              panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Total Amount : <strong>{{total}}</strong>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="generateReport(dp)">Show Records</button>
+      </form>
+
+      <br><br>
+
+
+      <ng-container *ngIf="collection.data.length; else noRecords">
+        <table class="table">
+          <thead>
+            <th>Sr. No.</th>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let expense of collection.data | paginate: config">
+              <td>{{ expense.id }}</td>
+              <td>{{ expense.value.title }}</td>
+              <td>{{ expense.value.amount }}</td>
+              <td>{{ expense.value.edate }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      </ng-container>
+      <ng-template #noRecords>
+        No Records
+      </ng-template>
+
+    </div>
+  </div>
+  </div></div>
+
+
+  </ng-container>
+
+
